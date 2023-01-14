@@ -9,8 +9,7 @@ import java.util.List;
 
 public class XYZBankPage {
 
-    public XYZBankPage(){
-
+    public XYZBankPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -21,10 +20,10 @@ public class XYZBankPage {
     public WebElement addCustomerButton;
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
-    public WebElement firstNameInput;
+    public WebElement firstnameInput;
 
     @FindBy(xpath = "//input[@placeholder='Last Name']")
-    public WebElement lastNameInput;
+    public WebElement lastnameInput;
 
     @FindBy(xpath = "//input[@placeholder='Post Code']")
     public WebElement postCodeInput;
@@ -41,13 +40,13 @@ public class XYZBankPage {
     @FindBy(id = "currency")
     public WebElement currencyDropdown;
 
-    @FindBy(xpath = "//button[.='Process']")
+    @FindBy(xpath = "//button[@type='submit']")
     public WebElement processButton;
 
     @FindBy(xpath = "//button[@ng-class='btnClass3']")
     public WebElement customersButton;
 
-    @FindBy(xpath = "//table//tbody//tr")
+    @FindBy(xpath = "//tbody//td[1]")
     public List<WebElement> numberOfCustomerRows;
 
     @FindBy(xpath = "//button[.='Home']")
@@ -78,16 +77,16 @@ public class XYZBankPage {
     public WebElement withdrawalButton;
 
     @FindBy(xpath = "//input[@placeholder='amount']")
-    public WebElement withdrawAmountInput;
+    public WebElement withdrawalAmountInput;
 
     @FindBy(xpath = "//button[.='Withdraw']")
     public WebElement withdrawSubmitButton;
 
-    @FindBy(xpath = "//span[.='Transaction successful']")
+    @FindBy(xpath = "//span[@ng-show='message']")
     public WebElement transactionSuccessfulMessage;
 
     @FindBy(xpath = "//button[.='Logout']")
-    public WebElement logoutButton;
+    public WebElement logOutButton;
 
     @FindBy(xpath = "//button[.='Delete']")
     public List<WebElement> deleteButtonList;

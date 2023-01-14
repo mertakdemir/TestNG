@@ -105,13 +105,13 @@ Then
 //        Click on "Add Customer" button
         xyzBankPage.addCustomerButton.click();
 
-//        Fill inputs and click on "Add Customer" submit button
+//       Fill inputs and click on "Add Customer" submit button
         Faker faker = new Faker();
 
         for (int i = 0; i < 5; i++) {
 
-            xyzBankPage.firstNameInput.sendKeys(faker.name().firstName());
-            xyzBankPage.lastNameInput.sendKeys(faker.name().lastName());
+            xyzBankPage.firstnameInput.sendKeys(faker.name().firstName());
+            xyzBankPage.lastnameInput.sendKeys(faker.name().lastName());
             xyzBankPage.postCodeInput.sendKeys(faker.address().zipCode());
             xyzBankPage.addCustomerSubmitButton.click();
 //        Accept alert
@@ -129,27 +129,22 @@ Then
 
 //        Click on "Customer" dropdown
 //        Select customer name
-//        Open 4 more accounts
-//        Click on "Currency" dropdown
-//        Select "Dollar"
-//        Click on "Process" button
-//        Accept alert
         Select customerDD = new Select(xyzBankPage.customerDropdown);
         Select currencyDD = new Select(xyzBankPage.currencyDropdown);
 
         for (int i = 6; i < 11; i++) {
-
+//        Click on "Currency" dropdown
             customerDD.selectByIndex(i);
-
+//        Select "Dollar"
             currencyDD.selectByIndex(1);
-
+//        Click on "Process" button
             xyzBankPage.processButton.click();
-
+//        Accept alert
             try {
                 Driver.getDriver().switchTo().alert().accept();
             } catch (Exception ignored) {
             }
-
+//        Open 4 more accounts
         }
 
 //        Click on "Customers" button
@@ -161,64 +156,67 @@ Then
 //        Assert that you created 5 customers
         assertEquals(10, numberOfCustomerRows);
 
-        //    Click on "Home" button
+//        Click on "Home" button
         xyzBankPage.homeButton.click();
 
-        //    Click on "Customer Login" button
+//        Click on "Customer Login" button
         xyzBankPage.customerLoginButton.click();
 
-        //    Click on "Your Name" dropdown
-        //    Select any name you created
+//        Select any name you created
         Select yourNameDD = new Select(xyzBankPage.yourNameDropdown);
         yourNameDD.selectByIndex(9);
 
-        //    Click on "Login" button
+//        Click on "Login" button
         xyzBankPage.loginButton.click();
 
-        //    Click on "Deposit" button
+//        Click on "Deposit" button
         xyzBankPage.depositButton.click();
 
-        //    Type 100 into "Amount to be Deposited" input
+//        Type 100 into "Amount to be Deposited" input
         xyzBankPage.depositAmountInput.sendKeys("100");
 
-        //    Click on "Deposit"(Submit) button
+//        Click on "Deposit"(Submit) button
         xyzBankPage.depositSubmitButton.click();
 
-        //    Assert that "Deposit Successful" is displayed
+//        Assert that "Deposit Successful" is displayed
         assertTrue(xyzBankPage.depositSuccessfulMessage.isDisplayed());
 
-        //    Click on "Withdrawal" button
+//        Click on "Withdrawal" button
         xyzBankPage.withdrawalButton.click();
 
-        //    Type 100 into "Amount to be Withdrawn" input
-        xyzBankPage.withdrawAmountInput.sendKeys("100");
+//        Type 100 into "Amount to be Withdrawn" input
+        xyzBankPage.withdrawalAmountInput.sendKeys("100");
 
-        //    Click on "Withdraw"(Submit) button
+//        Click on "Withdraw"(Submit) button
         Actions actions = new Actions(Driver.getDriver());
         actions.click(xyzBankPage.withdrawSubmitButton);
+//        xyzBankPage.withdrawSubmitButton.click();
 
-        //    Assert that "Transaction  Successful" is displayed
+//        Assert that "Transaction  Successful" is displayed
         assertTrue(xyzBankPage.transactionSuccessfulMessage.isDisplayed());
 
-        //    Click on "Logout" button
-        xyzBankPage.logoutButton.click();
+//        Click on "Logout" button
+        xyzBankPage.logOutButton.click();
 
-        //    Click on "Home" button
+//        Click on "Home" button
         xyzBankPage.homeButton.click();
 
-        //    Click on "Bank Manager Login" button
+//        Click on "Bank Manager Login" button
         xyzBankPage.bankManagerLoginButton.click();
 
-        //    Click on "Customers" button
+//        Click on "Customers" button
         xyzBankPage.customersButton.click();
 
-        //    Click on each "Delete" button
-        for (WebElement w : xyzBankPage.deleteButtonList){
+//        Click on each "Delete" button
+        for (WebElement w : xyzBankPage.deleteButtonList) {
             w.click();
         }
 
-        //    Count table row numbers
-        //    Assert that number of customers is 0
+//        Count table row numbers
+//        Assert that number of customers is 0
         assertEquals(0, xyzBankPage.deleteButtonList.size());
+
+        Driver.closeDriver();
+
     }
 }
