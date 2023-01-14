@@ -22,4 +22,7 @@ public class LoginPage {
 
     @FindBy(xpath = "//div[.='Bad credentials']")
     public WebElement errorMessage;
+
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement emailErrorMessage;
 }
