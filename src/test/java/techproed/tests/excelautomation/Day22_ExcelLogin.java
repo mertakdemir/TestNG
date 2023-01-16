@@ -1,5 +1,6 @@
 package techproed.tests.excelautomation;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage;
 import techproed.pages.LoginPage;
@@ -25,7 +26,25 @@ public class Day22_ExcelLogin {
         homePage = new HomePage();
         loginPage = new LoginPage();
         ReusableMethods.waitFor(3);
-        homePage.homePageLoginLink.click();
+        try {
+            homePage.homePageLoginLink.click();
+        }catch (Exception e){
+        }
+
+        try {
+            ReusableMethods.waitFor(1);
+            homePage.userID.click();
+            ReusableMethods.waitFor(1);
+            homePage.logoutLink.click();
+            ReusableMethods.waitFor(1);
+            homePage.OK.click();
+            ReusableMethods.waitFor(1);
+            homePage.homePageLoginLink.click();
+            ReusableMethods.waitFor(1);
+        }catch (Exception e){
+
+        }
+
         ReusableMethods.waitFor(3);
 
     }
@@ -40,7 +59,25 @@ public class Day22_ExcelLogin {
         //we stored that data in allTestData variable
         allTestData = excelUtils.getDataList();
         System.out.println(allTestData);
+        for (Map<String,String> eachData : allTestData){
+            //Takes us to the login page
+            login();
+            loginPage.email.sendKeys(eachData.get("username"));
+            ReusableMethods.waitFor(1);
+            loginPage.password.sendKeys(eachData.get("password"));
+            loginPage.loginButton.click();
+            ReusableMethods.waitFor(1);
+            //Verify if login is successful
+            //IF USER ID IS DISPLAYED THEN LOGIN IS SUCCESSFUL
+            ReusableMethods.verifyElementDisplayed(homePage.userID);
 
 
+        }
+
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
     }
 }
