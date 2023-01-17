@@ -81,13 +81,13 @@ public class Day19_Annotations {
 
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, groups = "minor-regression-group")
     public void test5(){
         System.out.println("Test5");
 
     }
 
-    @Test
+    @Test(groups = "minor-regression-group")
     public void test6(){
         System.out.println("Test6");
     }
