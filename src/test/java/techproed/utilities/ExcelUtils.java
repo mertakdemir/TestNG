@@ -112,7 +112,7 @@ public class ExcelUtils {
         int column = getColumnsNames().indexOf(columnName);
         setCellData(value, row, column);
     }
-    //this method will return data table as 2d array
+    //this method will return data table as 2d array,
     //so we need this format because of data provider.
     public String[][] getDataArrayWithoutFirstRow() {
         String[][] data = new String[rowCount()-1][columnCount()];

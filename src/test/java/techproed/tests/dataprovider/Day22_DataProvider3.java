@@ -14,7 +14,7 @@ public class Day22_DataProvider3 {
 
     /*
 In this method, we will get the data from EXCEL using DATA PROVIDER
-The only difference between class 2 and class 3 is the place where we get teh data
+The only difference between class 2 and class 3 is the place where we get the data
 In class 2, we received the data from the class itself. In this class, we get the data from excel
  */
     HomePage homePage;
