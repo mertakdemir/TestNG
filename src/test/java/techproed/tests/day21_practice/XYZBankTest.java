@@ -5,10 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import techproed.pages.XYZBankPage;
 import techproed.utilities.ConfigReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ReusableMethods;
 
 import static org.testng.Assert.*;
 
@@ -93,7 +95,7 @@ Then
     Assert that number of customers is 0
      */
 
-    @Test
+    @Test(groups = "smoke-test")
     public void xyzBankTest() {
         XYZBankPage xyzBankPage = new XYZBankPage();
 //        Go to url https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login
@@ -216,7 +218,11 @@ Then
 //        Assert that number of customers is 0
         assertEquals(0, xyzBankPage.deleteButtonList.size());
 
-        Driver.closeDriver();
+    }
 
+    @AfterMethod
+    public void closeBrowser(){
+        ReusableMethods.waitFor(3);
+        Driver.closeDriver();
     }
 }
